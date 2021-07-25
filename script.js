@@ -91,7 +91,8 @@ class Display {
   displayLeftTime(sec) {
     console.log(sec / 60);
     const minutes =
-      sec / 60 > 0.99 && sec / 60 < 1
+      sec / 60 > Math.floor(sec / 60) + 0.99 &&
+      sec / 60 < 1 * Math.round(sec / 60)
         ? Math.round(sec / 60)
         : Math.floor(sec / 60);
     const seconds = Math.round(sec % 60) === 60 ? 0 : Math.round(sec % 60);
