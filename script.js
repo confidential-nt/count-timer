@@ -45,9 +45,7 @@ class App {
   }
 
   displayBtnsTime(e) {
-    const { target } = e;
-
-    const { time } = target.dataset;
+    const { time } = e.target.dataset;
 
     const sec = parseInt(time, 10);
 
@@ -87,7 +85,7 @@ class Display {
 
   displayLeftTime(sec) {
     const minutes = Math.floor(sec / 60);
-    const seconds = Math.round(sec % 60);
+    const seconds = Math.round(sec % 60) === 60 ? 0 : Math.round(sec % 60);
 
     return `${minutes < 10 ? `0${minutes}` : minutes}:${
       seconds < 10 ? `0${seconds}` : seconds
