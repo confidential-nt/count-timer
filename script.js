@@ -61,7 +61,12 @@ class App {
 
     this.timeId = setInterval(() => {
       const current = Date.now();
-      const diff = end - current;
+      let diff = end - current;
+
+      if (Math.round(diff / 1000) <= 0) {
+        clearInterval(this.timeId);
+        diff = 0;
+      }
 
       this.timeLeftEl.textContent = this.Display.displayLeftTime(diff / 1000);
     }, 1000);
